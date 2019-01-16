@@ -6,12 +6,6 @@ import time
 ##### Mod Inverse Function #####
 # a = number we want the inverse of
 # m = prime mod
-'''def modinv(a,m):
-	a = a%m
-	for i in range(1,m):
-		if((a*i)%m == 1): return i
-	return -1
-'''
 def modinv(a,m):
 	g = gcd(a,m)
 	if g != 1: return -1
@@ -28,7 +22,7 @@ def gcd(a,b):
 ## g = a number such that g^p = 1 mod(p) 
 def gen_params(l=2048,n=224): 
 	q = [i for i in primenums(2**(n-1), 2**n, 1)][0]
-	p = gen_p(q,l,n)#primenums(2**(l-1), 2**l, 1)[0] #Change
+	p = gen_p(q,l,n)
 	if p == -1: return gen_params(l,n)
 	z = (p-1)//q
 	h = 2
@@ -37,14 +31,14 @@ def gen_params(l=2048,n=224):
 	else: g = pow(h,z,p)
 	return p,q,g  #Sharable Values
 
-def gen_p(q,l,n):
+def gen_p(q,l,n): #Very Slow
 	lb = 2**(l-1)//q + 1
 	ub = 2**(l)//q - 1
 	z = randint(lb,ub)
 	dt = time.time()
 	while not isprime(z*q+1):
 		if time.time() - dt >= 2: 
-			print("Trying New Params")
+			print("Trying New Params") #attempts to generate new params if taking too long
 			return -1
 		z = randint(lb,ub)
 	return z*q+1	
