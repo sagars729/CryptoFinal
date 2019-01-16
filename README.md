@@ -1,3 +1,3 @@
 # Cryptography Final Project
-## Created By Sagar Saxena and Vibhu Kundeti
+Created By Sagar Saxena and Vibhu Kundeti
  
