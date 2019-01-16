@@ -52,11 +52,11 @@ def Paillier(f,encode):
    ######CREATE KEYS######
    p1= primenumber(f) # Begin with two random prime numbers
    p2= primenumber(f)
-   ###PRIVATE KEYS - g, n
+   ###PUBLIC KEYS --- g, n
    n = p1*p2 
    g= n+1 #any number coprime to n
    print(n)
-   ###PUBLIC KEYS - lamb, mu
+   ###PRIVATE KEYS --- lamb, mu
    lamb = lcm(p1-1,p2-1) 
    L = (pow(g, lamb, n*n)-1)//n
    mu = modinv(L, n) # equal to (L(g^lambda mod(n^2)))^-1
